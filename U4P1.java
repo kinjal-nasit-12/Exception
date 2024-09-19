@@ -34,7 +34,7 @@ class U4P1 {
         } catch (NumberFormatException e) {
             printMessage("Please enter only integer number.");
         } catch (ArrayIndexOutOfBoundsException e) {
-            printMessage("Array index is out of bounce");
+            printMessage("Array index is out of bounce.");
         }
         scanner.close();
     }
