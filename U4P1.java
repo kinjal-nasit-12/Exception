@@ -1,7 +1,7 @@
 /* Write a Java program to input n integer numbers and display lowest and second
 lowest number. Also handle the different exceptions possible to be thrown during
 execution. */
-import java.util.Scanner;
+import java.util.*;
 
 class U4P1 {
 
@@ -16,27 +16,15 @@ class U4P1 {
             for (int i = 0; i < n; i++) {
                 a[i] = getIntegerValue(scanner);
             }
-            for (int i = 0; i < a.length; i++) {
-                for (int j = i + 1; j < a.length; j++) {
-                    if (a[i] > a[j]) {
-                        int t = a[i];
-                        a[i] = a[j];
-                        a[j] = t;
-                    }
-                }
-            }
-            printMessage("Array after sorting: ");
-            for (int i = 0; i < a.length; i++) {
-                printMessage("Array[" + i + "]= " + a[i]);
-            }
+            Arrays.sort(a);
+            printMessage("Array after sorting: " + Arrays.toString(a));
             printMessage("Lowest: " + a[0]);
             printMessage("Second Lowest: " + a[1]);
-        } catch (NumberFormatException e) {
-            printMessage("Please enter only integer number.");
-        } catch (ArrayIndexOutOfBoundsException e) {
-            printMessage("Array index is out of bounce.");
+        } catch (Exception e) {
+            printMessage("An unexpected error occurred: " + e.getMessage());
+        } finally {
+            scanner.close();
         }
-        scanner.close();
     }
 
     public static void printMessage(String message) {
@@ -44,6 +32,13 @@ class U4P1 {
     }
 
     public static int getIntegerValue(Scanner scanner) {
-        return scanner.hasNextInt() ? scanner.nextInt() : 0;
+        while (true) {
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException e) {
+                printMessage("Invalid input. Please enter an integer.");
+                scanner.next();
+            }
+        }
     }
 }
