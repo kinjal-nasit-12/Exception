@@ -19,9 +19,9 @@ class U4P1 {
             Arrays.sort(a);
             printMessage("Array after sorting: " + Arrays.toString(a));
             printMessage("Lowest: " + a[0]);
-            printMessage("Second Lowest: " + a[1]);
+            printMessage("Second Lowest: " + (n > 1 ? a[1] : "Not available (only one element)"));
         } catch (Exception e) {
-            printMessage("An unexpected error occurred: " + e.getMessage());
+            printMessage("Exception >> An unexpected error occurred: " + e.getMessage());
         } finally {
             scanner.close();
         }
@@ -36,7 +36,7 @@ class U4P1 {
             try {
                 return scanner.nextInt();
             } catch (InputMismatchException e) {
-                printMessage("Invalid input. Please enter an integer.");
+                printMessage("InputMismatchException >> Invalid input. Please enter an integer.");
                 scanner.next();
             }
         }
