@@ -52,7 +52,7 @@ public class U4P2 {
         }
     }
 
-    private static int getIntegerValue(Scanner scanner) throws RangeException {
+    public static int getIntegerValue(Scanner scanner) throws RangeException {
         int marks = scanner.nextInt();
         if (marks < 0 || marks > 100) {
             throw new RangeException("Marks must be between 0 and 100.");
