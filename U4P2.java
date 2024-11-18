@@ -3,9 +3,9 @@ Marks should be between 0 to 100, if marks of any of the subject do not belong t
 this range, generate custom exception out of RangeException. If marks of each
 subjects are greater than or equal to 40 then display message “PASS” along with
 percentage, otherwise display message “FAIL”. Also write exception handling code
-to catch all the possible runtime exceptions likely to be generated in the program.*/ 
-
+to catch all the possible runtime exceptions likely to be generated in the program. */
 import java.util.Scanner;
+
 class RangeException extends Exception {
 
     public RangeException(String message) {
@@ -30,17 +30,14 @@ public class U4P2 {
             boolean allPass = true;
 
             for (int i = 0; i < numberOfSubjects; i++) {
-                try {
-                    printMessage("Enter marks for Subject " + (i + 1) + ": ");
-                    marks[i] = getIntegerValue(scanner);
-                    totalMarks += marks[i];
+                printMessage("Enter marks for Subject " + (i + 1) + ": ");
+                marks[i] = getIntegerValue(scanner);
+                totalMarks += marks[i];
 
-                    if (marks[i] < 40) {
-                        allPass = false;
-                    }
-                } catch (RangeException e) {
-                    printMessage("\nError: " + e.getMessage());
+                if (marks[i] < 40) {
+                    allPass = false;
                 }
+
             }
             float percentage = (float) totalMarks / numberOfSubjects;
 
