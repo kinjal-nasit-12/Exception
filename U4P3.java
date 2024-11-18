@@ -1,7 +1,6 @@
 /* Write a program which takes the age of 5 persons from command line and find the
 average age of all persons. The program should handle exception if the argument
 is not correctly formatted and custom exception if the age is not between 1 to 100. */
-
 class AgeException extends Exception {
 
     public AgeException(String message) {
@@ -12,27 +11,40 @@ class AgeException extends Exception {
 public class U4P3 {
 
     public static void main(String[] args) {
+
         if (args.length != 5) {
             printMessage("Please provide exactly 5 ages as command line arguments.");
             return;
         }
 
         int totalAge = 0;
+        boolean isValidInput = true;
 
         for (int i = 0; i < args.length; i++) {
             try {
+
                 int age = Integer.parseInt(args[i]);
+
                 validateAge(age);
+
                 totalAge += age;
             } catch (NumberFormatException e) {
+
                 printMessage("Error: Age '" + args[i] + "' is not a valid number.");
+                isValidInput = false;
             } catch (AgeException e) {
+
                 printMessage("Error: " + e.getMessage());
+                isValidInput = false;
             }
         }
+        if (isValidInput) {
+            double averageAge = totalAge / 5.0;
+            printMessage("The average age is: " + averageAge);
+        } else {
+            printMessage("Average could not be calculated due to wrong input.");
+        }
 
-        double averageAge = totalAge / 5.0;
-        printMessage("The average age is: " + averageAge);
     }
 
     public static void printMessage(String message) {
