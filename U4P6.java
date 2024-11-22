@@ -5,8 +5,8 @@ displaying the next numbers. The application waits for both the thread to finish
 then displays the message “Both threads completed”. */
 class EvenOdd extends Thread {
 
-    public int lb, ub;
-    public boolean isEven;
+    int lb, ub;
+    boolean isEven;
 
     EvenOdd(int l, int u, boolean isEven) {
         this.lb = l;
